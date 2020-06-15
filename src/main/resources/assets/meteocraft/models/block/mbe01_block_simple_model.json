@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "down": "meteocraft:block/mbe01_block_simple_face0",
+        "up": "meteocraft:block/mbe01_block_simple_face1",
+        "north": "meteocraft:block/mbe01_block_simple_face2",
+        "east": "meteocraft:block/mbe01_block_simple_face5",
+        "south": "meteocraft:block/mbe01_block_simple_face3",
+        "west": "meteocraft:block/mbe01_block_simple_face4",
+        "particle": "block/lapis_block"
+    }
+}

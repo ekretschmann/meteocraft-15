@@ -13,9 +13,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
-group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
+version = '0.1'
+group = 'ai.scintillia' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'meteocraft'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -143,4 +143,9 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+task copyDeploy(type: Copy) {
+    from "build\\libs\\meteocraft-0.1.jar"
+    into "C:\\Users\\Matt Warnes\\AppData\\Roaming\\.minecraft\\mods"
 }
