@@ -33,6 +33,7 @@ public class MeteoCraft {
 
     public static void registerCommonEvents() {
         MOD_EVENT_BUS.register(ai.scintillia.blockexample.StartupCommon.class);
+        System.out.println("hello world");
 //        MOD_EVENT_BUS.register(minecraftbyexample.mbe02_block_partial.StartupCommon.class);
 //        MOD_EVENT_BUS.register(minecraftbyexample.mbe03_block_variants.StartupCommon.class);
 //        MOD_EVENT_BUS.register(minecraftbyexample.mbe04_block_dynamic_block_models.StartupCommon.class);
