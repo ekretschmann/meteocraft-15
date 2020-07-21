@@ -1,12 +1,122 @@
 {
-    "parent": "block/cube",
+    "ambientocclusion": false,
     "textures": {
-        "down": "meteocraft:block/mbe01_block_simple_face0",
-        "up": "meteocraft:block/mbe01_block_simple_face1",
-        "north": "meteocraft:block/mbe01_block_simple_face2",
-        "east": "meteocraft:block/mbe01_block_simple_face5",
-        "south": "meteocraft:block/mbe01_block_simple_face3",
-        "west": "meteocraft:block/mbe01_block_simple_face4",
-        "particle": "block/lapis_block"
-    }
+        "particle": "block/lapis_block",
+        "base": "block/obsidian",
+        "pole": "block/cobblestone"
+    },
+
+    "elements": [
+        {   "from": [ 2, 0, 1 ],
+            "to": [ 14, 7, 16 ],
+            "shade": false,
+            "faces": {
+                "down": {
+                    "uv": [
+                        14,
+                        0,
+                        14,
+                        16
+                    ],
+                    "texture": "#base"
+                },
+                "up": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        16
+                    ],
+                    "texture": "#base"
+                },
+                "east": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "north": {
+                    "uv": [
+                        14,
+                        0,
+                        2,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "south": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        1
+                    ],
+                    "texture": "#base"
+                }
+            }
+        },
+        {   "from": [ 3, 7, 4 ],
+            "to": [ 9, 10, 11 ],
+            "shade": false,
+            "faces": {
+                "up": {
+                    "uv": [
+                        15,
+                        6,
+                        9,
+                        10
+                    ],
+                    "texture": "#pole"
+                },
+                "east": {
+                    "uv": [
+                        6,
+                        1,
+                        10,
+                        8
+                    ],
+                    "texture": "#pole"
+                },
+                "west": {
+                    "uv": [
+                        6,
+                        1,
+                        10,
+                        8
+                    ],
+                    "texture": "#pole"
+                },
+                "north": {
+                    "uv": [
+                        7,
+                        1,
+                        9,
+                        8
+                    ],
+                    "texture": "#pole"
+                },
+                "south": {
+                    "uv": [
+                        7,
+                        1,
+                        9,
+                        8
+                    ],
+                    "texture": "#pole"
+                }
+            }
+        }
+    ]
 }
