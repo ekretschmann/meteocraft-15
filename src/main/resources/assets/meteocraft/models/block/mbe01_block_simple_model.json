@@ -1,7 +1,7 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "particle": "block/lapis_block",
+        "particle": "block/obsidian",
         "base": "block/obsidian",
         "pole": "block/cobblestone"
     },
