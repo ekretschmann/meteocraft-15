@@ -1,5 +1,6 @@
 package ai.scintillia;
 
+import ai.scintillia.init.BiomeInit;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -27,13 +28,15 @@ public class MeteoCraft {
 
         MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
+
         registerCommonEvents();
         DistExecutor.runWhenOn(Dist.CLIENT, () -> MeteoCraft::registerClientOnlyEvents);
+
     }
 
     public static void registerCommonEvents() {
         MOD_EVENT_BUS.register(ai.scintillia.blockexample.StartupCommon.class);
-
+        MOD_EVENT_BUS.register(ai.scintillia.init.BiomeInit.class);
 //        MOD_EVENT_BUS.register(minecraftbyexample.mbe02_block_partial.StartupCommon.class);
 //        MOD_EVENT_BUS.register(minecraftbyexample.mbe03_block_variants.StartupCommon.class);
 //        MOD_EVENT_BUS.register(minecraftbyexample.mbe04_block_dynamic_block_models.StartupCommon.class);

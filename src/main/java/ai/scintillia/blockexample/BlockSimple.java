@@ -6,13 +6,19 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 /**
  * User: The Grey Ghost
@@ -29,10 +35,10 @@ import net.minecraft.world.IBlockReader;
 public class BlockSimple extends Block {
 
     // for this model, we're making the shape match the block model exactly - see assets\minecraftbyexample\models\block\mbe02_block_partial_model.json
-    private static final Vec3d BASE_MIN_CORNER = new Vec3d(2.0, 0.0, 0.0);
-    private static final Vec3d BASE_MAX_CORNER = new Vec3d(14.0, 1.0, 16.0);
-    private static final Vec3d PILLAR_MIN_CORNER = new Vec3d(7.0, 1.0, 6.0);
-    private static final Vec3d PILLAR_MAX_CORNER = new Vec3d(9.0, 8.0, 10.0);
+    private static final Vec3d BASE_MIN_CORNER = new Vec3d(2.0, 0.0, 1.0);
+    private static final Vec3d BASE_MAX_CORNER = new Vec3d(14.0, 7.0, 16.0);
+    private static final Vec3d PILLAR_MIN_CORNER = new Vec3d(1.0, 7.0, 4.0);
+    private static final Vec3d PILLAR_MAX_CORNER = new Vec3d(9.0, 10.0, 11.0);
 
     private static final VoxelShape BASE = Block.makeCuboidShape(BASE_MIN_CORNER.getX(), BASE_MIN_CORNER.getY(), BASE_MIN_CORNER.getZ(),
             BASE_MAX_CORNER.getX(), BASE_MAX_CORNER.getY(), BASE_MAX_CORNER.getZ());
@@ -46,7 +52,12 @@ public class BlockSimple extends Block {
     // Vanilla uses this to (eg) make a cavity in a composter block or cauldron.
 
     public BlockSimple() {
-        super(Block.Properties.create(Material.ROCK).hardnessAndResistance(6,13)  // we don't want this to block movement through the block
+        super(Block.Properties.create(Material.ROCK)
+                              .hardnessAndResistance(5,50)
+                              .harvestTool(ToolType.PICKAXE)
+                              .harvestLevel(6)      //can't be mined with any tool with a harvest level less than this
+
+
                 // other typically useful properties: hardnessAndResistance(), harvestLevel(), harvestTool()
         );
     }
@@ -66,4 +77,6 @@ public class BlockSimple extends Block {
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return COMBINED_SHAPE;
     }
+
+
 }

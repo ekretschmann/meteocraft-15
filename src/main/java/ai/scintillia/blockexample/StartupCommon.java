@@ -1,12 +1,17 @@
 package ai.scintillia.blockexample;
 
+import ai.scintillia.MeteoCraft;
+import ai.scintillia.init.BiomeInit;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 /**
@@ -17,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
  * onBlocksRegistration then onItemsRegistration then onCommonSetupEvent
  *  See MinecraftByExample class for more information
  */
+@Mod.EventBusSubscriber(modid = MeteoCraft.MODID,bus= Mod.EventBusSubscriber.Bus.MOD)
 public class StartupCommon {
     public static BlockSimple BlockSimple;  // this holds the unique instance of your block
     public static BlockItem itemBlockSimple;  // this holds the instance of the ItemBlock for your Block
@@ -24,7 +30,13 @@ public class StartupCommon {
     @SubscribeEvent
     public static void onBlocksRegistration(final RegistryEvent.Register<Block> blockRegisterEvent) {
         BlockSimple = (BlockSimple)(new BlockSimple().setRegistryName("meteocraft", "mbe01_block_simple_registry_name"));
+
         blockRegisterEvent.getRegistry().register(BlockSimple);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterBiomes(final RegistryEvent.Register<Biome> event ) {
+        BiomeInit.registerBiomes();
     }
 
     @SubscribeEvent
@@ -34,8 +46,7 @@ public class StartupCommon {
 
         Item.Properties itemSimpleProperties = new Item.Properties()
                 .maxStackSize(MAXIMUM_STACK_SIZE)
-                .group(ItemGroup.BUILDING_BLOCKS)   // which inventory tab?
-                .addToolType(ToolType.SHOVEL,6);
+                .group(ItemGroup.BUILDING_BLOCKS);   // which inventory tab
         itemBlockSimple = new BlockItem(BlockSimple, itemSimpleProperties);
         itemBlockSimple.setRegistryName(BlockSimple.getRegistryName());
         itemRegisterEvent.getRegistry().register(itemBlockSimple);
