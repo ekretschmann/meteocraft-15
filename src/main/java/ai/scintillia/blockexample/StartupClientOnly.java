@@ -17,7 +17,7 @@ public class StartupClientOnly
 {
     @SubscribeEvent
     public static void onClientSetupEvent(FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(StartupCommon.BlockSimple, RenderType.getSolid());
+//        RenderTypeLookup.setRenderLayer(StartupCommon.BlockSimple, RenderType.getSolid());
     }
 }
 
