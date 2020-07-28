@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "meteocraft:mbe01_block_simple_registry_name"
+          "name": "meteocraft:meteorite_1"
         }
       ],
       "conditions": [

@@ -1,5 +1,5 @@
 {
-    "ambientocclusion": false,
+    "ambientocclusion": true,
     "textures": {
         "particle": "block/obsidian",
         "base": "block/obsidian",

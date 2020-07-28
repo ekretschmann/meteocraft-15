@@ -1,39 +1,23 @@
-package ai.scintillia.blockexample;
-
-
+package ai.scintillia.objects.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.DirectionalBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.DirectionProperty;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-/**
- * User: The Grey Ghost
- * Date: 24/12/2014
- * <p>
- * BlockPartial uses a model which doesn't occupy the entire 1x1x1m space, and is made up of two pieces.
- * For background information on blocks see here http://greyminecraftcoder.blogspot.com/2020/02/blocks-1144.html
- * For background information on block shapes see here https://greyminecraftcoder.blogspot.com/2020/02/block-shapes-voxelshapes-1144.html
- * For a couple of the methods below the Forge guys have marked it as deprecated.  But you still need to override those
- * "deprecated" block methods.  What they mean is "when you want to find out what is a block's getRenderType(),
- * don't call block.getRenderType(), call blockState.getRenderType() instead".
- * If that doesn't make sense to you yet, don't worry.  Just ignore the "deprecated method" warning.
- */
-public class BlockSimple extends Block {
-
+public class Meteorite1 extends Block {
     // for this model, we're making the shape match the block model exactly - see assets\minecraftbyexample\models\block\mbe02_block_partial_model.json
     private static final Vec3d BASE_MIN_CORNER = new Vec3d(2.0, 0.0, 1.0);
     private static final Vec3d BASE_MAX_CORNER = new Vec3d(14.0, 7.0, 16.0);
@@ -51,15 +35,13 @@ public class BlockSimple extends Block {
     // use this method if you need to make "holes"; eg in this case we are making a VoxelShape for the empty (non-solid) space in this block
     // Vanilla uses this to (eg) make a cavity in a composter block or cauldron.
 
-    public BlockSimple() {
-        super(Block.Properties.create(Material.ROCK)
-                              .hardnessAndResistance(5,50)
-                              .harvestTool(ToolType.PICKAXE)
-                              .harvestLevel(6)      //can't be mined with any tool with a harvest level less than this
+    public Meteorite1(Properties properties) {
+        super(properties.create(Material.ROCK)
+                        .hardnessAndResistance(0,50)
 
-
-                // other typically useful properties: hardnessAndResistance(), harvestLevel(), harvestTool()
         );
+
+
     }
 
     // render using a BakedModel (mbe02_block_partial.json --> mbe02_block_partial_model.json)
@@ -80,3 +62,4 @@ public class BlockSimple extends Block {
 
 
 }
+
