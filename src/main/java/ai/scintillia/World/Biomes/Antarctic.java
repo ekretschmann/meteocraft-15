@@ -40,7 +40,7 @@ public class Antarctic extends Biome {
                 .category(Category.ICY)
                 .depth(0.000125F)
                 .scale(0.0005F)
-                .temperature(-5.0f)
+                .temperature(0.0f)
                 .downfall(0.5f)
                 .waterColor(53247)
                 .waterFogColor(9359359)
@@ -57,7 +57,7 @@ public class Antarctic extends Biome {
         this.addCarver(GenerationStage.Carving.AIR,
                 Biome.createCarver(WorldCarver.CAVE, new ProbabilityConfig(0.14285715F)));
         this.addCarver(GenerationStage.Carving.AIR,
-                Biome.createCarver(WorldCarver.CANYON, new ProbabilityConfig(0.02F)));
+                Biome.createCarver(WorldCarver.CANYON, new ProbabilityConfig(0.04F)));
 
 
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
@@ -67,7 +67,8 @@ public class Antarctic extends Biome {
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addExtraGoldOre(this);
         DefaultBiomeFeatures.addExtraEmeraldOre(this);
-
+        DefaultBiomeFeatures.addIcebergs(this);
+        DefaultBiomeFeatures.addBlueIce(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
         DefaultBiomeFeatures.addFossils(this);
         DefaultBiomeFeatures.addIcebergs(this);
@@ -76,7 +77,7 @@ public class Antarctic extends Biome {
         DefaultBiomeFeatures.addTaigaRocks(this);
 
 
-//                FeatureInit.addExampleFeature(this, 10);
+                FeatureInit.addExampleFeature(this, 10);
     }
 
 
