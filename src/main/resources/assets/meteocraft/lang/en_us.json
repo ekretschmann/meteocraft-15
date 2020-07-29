@@ -1,3 +1,11 @@
 {
-  "block.meteocraft.meteorite_1": "Meteorite 1"
+  "block.meteocraft.meteorite_1": "Meteorite 1",
+
+
+  "commands.hello" : "Hello %s!",
+  "commands.hello.color": "Hello %s!,%s!",
+  "commands.hello.unknown": "Unknown color: %s",
+  "biome.meteocraft.antarctic": "Antarctic",
+  "biome.meteocraft.antarctic_frozen_lake":"Antarctic Frozen Lake",
+  "biome.meteocraft.low_erosion_desert": "Low Erosion Desert"
 }

@@ -1,5 +1,6 @@
 package ai.scintillia;
 
+import ai.scintillia.commands.HelloCommand;
 import ai.scintillia.init.BiomeInit;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
@@ -54,36 +55,8 @@ public class MeteoCraft {
 
     private void setup(final FMLCommonSetupEvent event) {// K9#8016
 
-        /*
-         * DeferredWorkQueue.runLater(() -> { for (Biome biome : ForgeRegistries.BIOMES)
-         * { if (biome instanceof ExampleBiome) {
-         * biome.getSpawns(EntityClassification.MONSTER) .add(new
-         * Biome.SpawnListEntry(EntityType.ZOMBIE, 1000, 1, 4)); } } });
-         */
     }
 
 
-    @SubscribeEvent
-    public static void onServerStarting(FMLServerStartingEvent event) {
 
-    }
-
-    @SubscribeEvent
-    public static void loadCompleteEvent(FMLLoadCompleteEvent event) {
-        // This doesnt work anymore
-        // TutorialOreGen.generateOre();
-    }
-
-    public static class TutorialItemGroup extends ItemGroup {
-        public static final ItemGroup instance = new TutorialItemGroup(ItemGroup.GROUPS.length, "tutorialtab");
-
-        private TutorialItemGroup(int index, String label) {
-            super(index, label);
-        }
-
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(Blocks.COARSE_DIRT);
-        }
-    }
 }

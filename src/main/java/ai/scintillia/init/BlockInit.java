@@ -36,7 +36,7 @@ public class BlockInit {
     @SubscribeEvent
     public static void registerBlockItems(final RegistryEvent.Register<Item> event){
 
-        event.getRegistry().register(new BlockItem(meteorite_1,new Item.Properties().maxStackSize(10).group(ItemGroup.BUILDING_BLOCKS)).setRegistryName("meteorite_1")  );
+        event.getRegistry().register(new BlockItem(meteorite_1,new Item.Properties().maxStackSize(10).group(ItemTabInit.instance)).setRegistryName("meteorite_1")  );
     }
 
 }
