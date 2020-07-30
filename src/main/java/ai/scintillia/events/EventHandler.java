@@ -1,7 +1,7 @@
 package ai.scintillia.events;
 
 import ai.scintillia.MeteoCraft;
-import ai.scintillia.commands.HelloCommand;
+import ai.scintillia.commands.MeteoriteRainCommand;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 
     @SubscribeEvent
     public static void onServerStarting(final FMLServerStartingEvent event) {
-        HelloCommand.register(event.getCommandDispatcher());
+        MeteoriteRainCommand.register(event.getCommandDispatcher());
     }
 
     @SubscribeEvent
