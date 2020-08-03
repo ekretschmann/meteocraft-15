@@ -34,6 +34,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 
@@ -55,32 +56,49 @@ public class MeteoriteRainCommand {
     private static int setMeteorite(CommandSource source, BlockPos pos, @Nullable Predicate<CachedBlockInfo> predicate) throws CommandSyntaxException {
         ServerWorld serverworld = source.getWorld();
 
-        if (predicate != null && !predicate.test(new CachedBlockInfo(serverworld, pos, true))) {
-            throw FAILED_EXCEPTION.create();
+//        if (predicate != null && !predicate.test(new CachedBlockInfo(serverworld, pos, true))) {
+//            throw FAILED_EXCEPTION.create();
+//        }
+//        else {
+//            int loopBreaker=0;
+//            boolean inAntarctic=false;
+//            if(source.getWorld().getBiome(new BlockPos(pos)).toString().toLowerCase().contains("antarctic")  ){
+//                inAntarctic=true;
+//            }
+//            while(inAntarctic){
+//              pos =  pos.offset(Direction.WEST);
+//                if(loopBreaker++>3){
+//                    inAntarctic=false;
+//                }
+//
+////                source.asPlayer().world.setBlockState(pos, Blocks.BEDROCK.getDefaultState());
+//                    place(source.getWorld(),pos);
+//
+//            }
+//            source.getWorld().getBiome(new BlockPos(pos));
+
+
+
+        List<MeteoritePlacer.Coordinate> coordinateList =MeteoritePlacer.placeMeteorites(pos.getX(),pos.getZ(),"Antarctic", new MinecraftWorld(serverworld),0.001f);
+
+        BiomeBoundaries boundaries= MeteoritePlacer.getBoundariesHeuristic(pos.getX(),pos.getZ(),new MinecraftWorld(serverworld));
+        System.out.println("help");
+        source.sendFeedback(new TranslationTextComponent( boundaries.toString()),true);
+        source.sendFeedback(new TranslationTextComponent( coordinateList.toString()),true);
+
+        for (MeteoritePlacer.Coordinate c: coordinateList) {
+            source.sendFeedback(new TranslationTextComponent( c.toString()),true);
+
+            place(source.getWorld(),new BlockPos(c.x,70,c.y));
+            source.getWorld().setBlockState(pos, BlockInit.meteorite_1.getDefaultState(), 2);
         }
-        else {
-            int loopBreaker=0;
-            boolean inAntarctic=false;
-            if(source.getWorld().getBiome(new BlockPos(pos)).toString().toLowerCase().contains("antarctic")  ){
-                inAntarctic=true;
-            }
-            while(inAntarctic){
-              pos =  pos.offset(Direction.WEST);
-                if(loopBreaker++>3){
-                    inAntarctic=false;
-                }
 
-//                source.asPlayer().world.setBlockState(pos, Blocks.BEDROCK.getDefaultState());
-                    place(source.getWorld(),pos);
-
-            }
-            source.getWorld().getBiome(new BlockPos(pos));
             source.sendFeedback(new TranslationTextComponent(source.getWorld().getBiome(new BlockPos(pos)).toString()),true);
 
             return 1;
 
         }
-    }
+
 
     public enum Mode {
         DESTROY;
