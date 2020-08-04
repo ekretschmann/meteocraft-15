@@ -46,14 +46,8 @@ public class Antarctic extends Biome {
                 .waterFogColor(9359359)
                 .parent(null));
 
+//        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.BEE, 20, 20, 30));
 
-
-
-
-
-
-        this.addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.COW, 10, 2, 5));
-        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.BEE, 20, 20, 30));
         this.addCarver(GenerationStage.Carving.AIR,
                 Biome.createCarver(WorldCarver.CAVE, new ProbabilityConfig(0.14285715F)));
         this.addCarver(GenerationStage.Carving.AIR,
@@ -77,7 +71,9 @@ public class Antarctic extends Biome {
         DefaultBiomeFeatures.addTaigaRocks(this);
 
 
-                FeatureInit.addExampleFeature(this, 10);
+//        FeatureInit.addExampleFeature(this, 10);
+
+
     }
 
 

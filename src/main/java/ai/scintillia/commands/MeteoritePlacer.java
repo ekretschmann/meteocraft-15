@@ -1,10 +1,5 @@
 package ai.scintillia.commands;
 
-import net.minecraft.command.CommandSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +28,10 @@ public class MeteoritePlacer {
         Coordinate diagonalBottomLeft=runBottomLeft(x,y,biome,w);
 
 
-//        BiomeBoundaries result=new BiomeBoundaries(leftX.x,bottomY.y,rightX.x,topY.y,w.getBiome(x,y));
         long maxX=Math.max(Math.max(rightX.x,diagonalTopRight.x),diagonalBottomRight.x);
 
         long maxY=Math.max(Math.max(topY.y,diagonalTopRight.y),diagonalTopLeft.y);
-//
+
         long minX=Math.min(Math.min(leftX.x,diagonalTopLeft.x),diagonalBottomLeft.x);
 
         long minY=Math.min(Math.min(bottomY.y,diagonalBottomLeft.y),diagonalBottomRight.y );
@@ -53,19 +47,20 @@ public class MeteoritePlacer {
     }
 
     public static List<Coordinate> placeMeteorites(long x, long y, String biome, Plane w, float probability){
+
             List<Coordinate> result = new ArrayList<Coordinate>();
         BiomeBoundaries boundaries =getBoundariesHeuristic(x,y,w);
+
         for( x= boundaries.getMinX(); x<=boundaries.getMaX(); x++){
             for(y = boundaries.getMinY(); y<=boundaries.getMaxY(); y++ ){
                 if(Math.random()<probability  ){
                     if( w.getBiome(x,y).contains(biome)){
                         result.add(new Coordinate(x,y));
                     }
-
                 }
             }
-
         }
+
         return result;
     }
 
@@ -93,6 +88,14 @@ public class MeteoritePlacer {
         return new Coordinate(x,y);
     }
 
+    private static Coordinate runTopRight(long x, long y, String biome, Plane w){
+        while (    w.getBiome(x+1,y+1).equals(biome) ){
+            x++;
+            y++;
+        }
+        return new Coordinate(x,y);
+    }
+
     public static BiomeBoundaries getBoundariesHeuristic(long x, long y, Plane w){
 
         String biome =w.getBiome(x,y);
@@ -114,7 +117,6 @@ public class MeteoritePlacer {
 
         return  getBiomeBoundaries(middleX,middleY,w);
 
-//        return new BiomeBoundaries(x-20,y+20,x+20, -20,w.getBiome())
     }
 
 
@@ -152,14 +154,6 @@ public class MeteoritePlacer {
         return new Coordinate(x,y);
     }
 
-    private static Coordinate runTopRight(long x, long y, String biome, Plane w){
-        while (    w.getBiome(x+1,y+1).equals(biome) ){
-            x++;
-            y++;
-        }
-        return new Coordinate(x,y);
-    }
-
 
     public static class Coordinate{
         long x,y;
@@ -173,7 +167,7 @@ public class MeteoritePlacer {
             return "Coordinate{" +
                     "x=" + x +
                     ", y=" + y +
-                    '}';
+                    '}'+"\n";
         }
     }
 }
