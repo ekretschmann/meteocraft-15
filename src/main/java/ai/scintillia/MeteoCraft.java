@@ -22,6 +22,7 @@ public class MeteoCraft {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "meteocraft";
     public static MeteoCraft instance;
+    public static MeteoCraft test;  //useless, remove later
     public static final ResourceLocation EXAMPLE_DIM_TYPE = new ResourceLocation(MODID, "example");
 
 
